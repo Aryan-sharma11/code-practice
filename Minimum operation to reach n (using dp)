@@ -1,0 +1,31 @@
+package com.company;
+
+public class Main {
+    static int arr []=new int[16];
+    public static int min_op(int n)
+    {
+        int a=Integer.MAX_VALUE,b=Integer.MAX_VALUE,c=Integer.MAX_VALUE,min=0;
+        if(n==1)
+            return 0;
+        a=min_op(n-1);
+        if(n%2==0)
+        {
+            b=min_op(n/2);
+
+        }
+        if(n%3==0)
+        {
+            c=min_op(n/3);
+
+        }
+        min=Math.min(a,b);
+        min=Math.min(min,c);
+        arr[n]=1+min;
+        return arr[n];
+    }
+
+    public static void main(String[] args) {
+	// write your code here
+        System.out.println(min_op(15));
+    }
+}
