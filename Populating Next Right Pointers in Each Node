@@ -1,0 +1,32 @@
+class Solution {
+    public Node connect(Node root) {
+        // Your code goes here.
+          Queue<Node> q=new LinkedList<>();
+        if(root==null)
+            return null;
+        q.add(root);
+        q.add(null); //adding null as a delimeter whenever the level is changed
+        while(!q.isEmpty())
+        {
+        Node temp;
+              
+                temp=q.remove();
+               if(temp==null)
+               {
+                   if(!q.isEmpty())
+                        q.add(null);
+               }
+               
+                else{
+                  temp.next=q.peek();
+                  if(temp.left!=null)
+                      q.add(temp.left);
+                  if(temp.right!=null)
+                      q.add(temp.right);
+                 
+                  }
+     }
+        return root;
+        
+    }
+}
